@@ -1,0 +1,47 @@
+﻿@model WebApplication_WithImage.Models.DetailsModal
+
+<h1 class="text-center">Creatw Form</h1>
+<hr />
+<form method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <!-- Title field -->
+    <div class="form-group">
+        <label asp-for="Title" class="control-label"></label>
+        <input type="text" asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <!-- Name field -->
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input type="text" asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <!-- DocumentName field -->
+    <div class="form-group">
+        <label asp-for="DocumentName" class="control-label"></label>
+        <input type="text" asp-for="DocumentName" class="form-control" />
+        <span asp-validation-for="DocumentName" class="text-danger"></span>
+    </div>
+
+    <!-- Image upload -->
+    <div class="form-group">
+        <label asp-for="ImagePath" class="control-label"></label>
+        <input type="file" asp-for="ImagePath" class="form-control" />
+        <span asp-validation-for="ImagePath" class="text-danger"></span>
+    </div>
+
+
+    <input type="submit" value="Create" class="btn btn-primary" />
+</form>
+
+<a class="btn btn-primary" asp-action="Index"> Back to Index</a>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

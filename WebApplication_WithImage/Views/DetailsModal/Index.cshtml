@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WebApplication_WithImage.Models.DetailsModal>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List Of Persons</h1>
+
+<p>
+    <a class="btn btn-primary p-1 m-1" asp-controller="DetailsModal" asp-action="Create">Create New</a>
+</p>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="text-center text-primary">Details</div>
+        <table class="table table-bordered">
+            <thead>
+                <tr class="text-center bg-dark text-light">
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Name</th>
+
+                    <th>Document</th>
+
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                @if (Model != null)
+                {
+                    @foreach(var d in Model)
+                    {
+                        <tr>
+                            <td>@d.Id</td>
+                            <td>@d.Title</td>
+                            <td>@d.Name</td>
+                            <td>@d.DocumentName</td>
+                            <td>
+                                <img id="img-@d.Id" src="/Images/@d.Path" alt="@d.Name" style="width:100px;height:100px;" />
+                            </td>
+
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@d.Id">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@d.Id">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@d.Id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
